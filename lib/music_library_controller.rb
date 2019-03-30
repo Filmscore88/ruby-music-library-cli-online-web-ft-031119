@@ -41,7 +41,6 @@ class MusicLibraryController
 
 def list_songs
   sorted_songs= Song.all.sort_by { |song| song.name }
-  
   sorted_songs.each_with_index{|song,index|
     puts "#{index +1}. #{reformat_song(song)}"
   }
@@ -56,14 +55,14 @@ def list_artists
   sorted_artist= Artist.all.sort_by{|artist| artist.name}
       sorted_artist.each_with_index{|artist,index|
          puts "#{index +1}. #{artist.name}"
-  }
+      }
 end 
 
 def list_genres
    sorted_genres= Genre.all.sort_by{|genre| genre.name}
       sorted_genres.each_with_index{|genre,index|
          puts "#{index +1}. #{genre.name}"
-  }
+       }
 end
 
   def list_songs_by_artist
@@ -81,8 +80,7 @@ end
   def list_songs_by_genre
   puts "Please enter the name of a genre:"
   genre= gets.chomp
-    
-       if genre = Genre.find_by_name(genre)
+     if genre = Genre.find_by_name(genre)
         sorted_songs= genre.songs.sort_by{|song|song.name}
         sorted_songs.each.with_index{ |song, i|
          puts "#{i+1}. #{song.artist.name} - #{song.name}"
@@ -100,8 +98,4 @@ end
         puts "Playing #{song.name} by #{song.artist.name}"
       end 
   end
-  
-
-
-
 end
